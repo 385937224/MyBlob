@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    	 http://www.springframework.org/schema/beans/spring-beans.xsd
+     	 http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/aop
+         http://www.springframework.org/schema/aop/spring-aop.xsd
+         http://www.springframework.org/schema/tx
+     	 http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+
+	<!-- service层的bean -->
+	<bean id="articleService" class="cn.pbq.service.impl.ArticleService">
+		<property name="articleDao" ref="articleDao"></property>
+	</bean>
+
+	<!-- 实体类层不需要Spring创建。IOC容器写配置从DAO层开始写起来。 -->	
+	<!-- DAO层的bean -->
+	<bean id="articleDao" class="cn.pbq.dao.impl.ArticleDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+
+	
+	<!-- 	action层的bean -->
+	<bean id="articleAction" class="cn.pbq.action.ArticleAction">
+		<property name="articleService" ref="articleService"></property>
+	</bean>
+
+
+</beans>     
+
+
+
+
+
+
+
+
+
+

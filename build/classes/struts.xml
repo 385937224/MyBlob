@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+ 	<constant name="struts.configuration.xml.reload" value="true"/>
+ 		
+ 	
+	<package name="base-default" extends="struts-default">
+		
+		<action name="*" class="cn.pbq.action.ArticleAction" method="{1}">
+			<result name="allList">articleList.jsp</result>
+			<result name="allListAction" type="redirectAction">list.action</result>
+			<result name="viewAdd">articleAdd.jsp</result>
+			<result name="viewUpdate">articleUpdate.jsp</result>
+		</action>
+	</package>
+</struts>
